@@ -1,4 +1,4 @@
 .idea
-client/.svelte-kit
 client/node_modules
+client/public/build
 server/pb_data
