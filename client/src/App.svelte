@@ -5,18 +5,12 @@
 
 	export let initTodoList
 	export let user
-
-	todoList.subscribe(e=>{
-		console.log(e)
-	})
 	function addTodo(e){
 		initTodoList.push(e.detail)
-		/*
-		todoList.update(todo =>{
-			todo.push(e.detail)
-		})
-		
-		 */
+		todoList.set(initTodoList)
+	}
+	function removeTodo(index){
+		initTodoList.splice(index.detail,1)
 		todoList.set(initTodoList)
 	}
 
@@ -27,7 +21,7 @@
 	<h1>Hello {user.name}! </h1>
 	<Form on:new={addTodo}></Form>
 	{#each $todoList as todo, index}
-		<Card {todo}></Card>
+		<Card {todo} {index} on:remove={removeTodo}></Card>
 	{/each}
 </main>
 
