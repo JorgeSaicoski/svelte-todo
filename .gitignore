@@ -1,4 +1,4 @@
 .idea
 client/node_modules
 client/public/build
-server/pb_data
+server/node_modules
