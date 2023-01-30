@@ -1,10 +1,8 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
-const db = require("./database/connect")
-
-
 require("dotenv").config({ path: "./config.env" });
+const db = require("./database/connect")
 
 const app = express()
 

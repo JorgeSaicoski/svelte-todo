@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 
 
 async function connectToDB(){
+    console.log(process.env.DB_URI)
     try {
         mongoose.connect(process.env.DB_URI).then((db)=>{
             console.log("-----------------------")
