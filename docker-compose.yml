@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  node:
+    container_name: backend
+    restart: always
+    build:
+      context: ./server
+    ports:
+      - "5080:5080"
+    links:
+      - mongo
+    volumes:
+      - ./server:/app/server
+    networks:
+      - todo-app
+  svelte:
+    container_name: frontend
+    restart: always
+    build:
+      context: ./client
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./client:/app/client
+    networks:
+      - todo-app
+  mongo:
+    container_name: mongodb
+    image: mongo
+    restart: unless-stopped
+    networks:
+      - todo-app
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+volumes:
+  mongodb:
+networks:
+  todo-app:
+    driver: bridge
+
